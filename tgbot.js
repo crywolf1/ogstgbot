@@ -105,7 +105,7 @@ const updateNFTsPeriodically = (ctx) => {
 
 // Handle /start command
 bot.start((ctx) => {
-  ctx.reply("Welcome! Fetching NFT data for you...");
+  ctx.reply("Welcome!");
   sendNFTsToTelegram(ctx); // Trigger the fetchNFTs function when the user types /start
   updateNFTsPeriodically(ctx); // Start periodic updates
 });
