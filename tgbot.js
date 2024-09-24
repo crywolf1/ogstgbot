@@ -91,14 +91,23 @@ client.onItemListed("onchain-gaias", (event) => {
     const usdPrice = payment_token.usd_price;
     const priceInEth = base_price / Math.pow(10, payment_token.decimals);
     const message = `New Listing: NFT ID (Third Part): ${nftIdThirdPart}, Price: ${priceInEth} ETH, USD Price: ${usdPrice}`;
-    bot.telegram.sendMessage(YOUR_CHAT_ID, message); // Replace YOUR_CHAT_ID with your actual Telegram chat ID
+    bot.telegram.sendMessage(process.env.TELEGRAM_CHAT_ID, message); // Use the environment variable for chat ID
   }
 });
+
+// Function to continuously fetch and send updated NFTs
+const updateNFTsPeriodically = (ctx) => {
+  // Fetch and send NFTs every 5 minutes (300000 ms)
+  setInterval(async () => {
+    await sendNFTsToTelegram(ctx);
+  }, 300000); // Adjust the interval as needed
+};
 
 // Handle /start command
 bot.start((ctx) => {
   ctx.reply("Welcome! Fetching NFT data for you...");
   sendNFTsToTelegram(ctx); // Trigger the fetchNFTs function when the user types /start
+  updateNFTsPeriodically(ctx); // Start periodic updates
 });
 
 // Start the bot
