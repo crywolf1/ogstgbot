@@ -20,7 +20,7 @@ const options = {
   method: "GET",
   headers: {
     accept: "application/json",
-    "x-api-key": "75519ea1b6f54ee3aa3ac47d1a4eed93",
+    "x-api-key": process.env.OPENSEA_API_KEY,
   },
 };
 
