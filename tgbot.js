@@ -45,7 +45,7 @@ const fetchNFTs = async () => {
 // Function to format and send NFTs to a Telegram chat
 const sendNFTsToTelegram = async (ctx) => {
   try {
-    ctx.reply("Fetching NFT data, please wait..."); // Let the user know fetching has started
+    ctx.reply("Fetching OGs data, please wait..."); // Let the user know fetching has started
     const nfts = await fetchNFTs();
     const filteredNFTs = nfts.filter((nft) => {
       const identifier = parseInt(
