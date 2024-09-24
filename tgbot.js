@@ -1,14 +1,15 @@
+require("dotenv").config();
 const { Telegraf } = require("telegraf");
 const fetch = require("node-fetch");
 const WebSocket = require("ws");
 const { OpenSeaStreamClient } = require("@opensea/stream-js");
 
 // Initialize the Telegram bot with the token from BotFather
-const bot = new Telegraf("7846080659:AAHtWwRecdDBGnXpUcOx7vaveVCyaLJ_W_c");
+const bot = new Telegraf(process.env.TELEGRAM_BOT_TOKEN);
 
 // Initialize OpenSeaStreamClient
 const client = new OpenSeaStreamClient({
-  token: "abed5db5186243b4ac66e13bd9280d16",
+  token: process.env.OPENSEA_API_KEY,
   connectOptions: {
     transport: WebSocket,
   },
@@ -99,6 +100,7 @@ bot.start((ctx) => {
   ctx.reply("Welcome! Fetching NFT data for you...");
   sendNFTsToTelegram(ctx); // Trigger the fetchNFTs function when the user types /start
 });
+console.log("Telegram Bot Token:", process.env.TELEGRAM_BOT_TOKEN);
 
 // Start the bot
 bot.launch();
