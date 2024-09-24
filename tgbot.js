@@ -100,7 +100,6 @@ bot.start((ctx) => {
   ctx.reply("Welcome! Fetching NFT data for you...");
   sendNFTsToTelegram(ctx); // Trigger the fetchNFTs function when the user types /start
 });
-console.log("Telegram Bot Token:", process.env.TELEGRAM_BOT_TOKEN);
 
 // Start the bot
 bot.launch();
