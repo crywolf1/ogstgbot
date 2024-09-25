@@ -100,7 +100,7 @@ const updateNFTsPeriodically = (ctx) => {
   // Fetch and send NFTs every 5 minutes (300000 ms)
   setInterval(async () => {
     await sendNFTsToTelegram(ctx);
-  }, 300000); // Adjust the interval as needed
+  }, 600000); // Adjust the interval as needed
 };
 
 // Handle /start command
